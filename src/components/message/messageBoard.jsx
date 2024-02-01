@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FiBell } from "react-icons/fi"; // Import notification bell icon
-import { FaSearch } from "react-icons/fa"; // Import the search icon
+import { FiBell } from "react-icons/fi";
+import { FaSearch } from "react-icons/fa";
 import ChatSnippet from "./ChatSnippet";
 import NoProfile from "../../assets/images/message/groupiconwhite.png";
-import SchoolLogo from "../../assets/images/message/Linkbkj.png"; // Replace with the path to your school logo
-import ProfilePicture from "../../assets/images/message/profile.png"; // Replace with the path to your profile picture
+import SchoolLogo from "../../assets/images/message/Schoollogo.png";
+import ProfilePicture from "../../assets/images/message/profile.png";
 import NavigationPanel from "./NavigationPanel";
 import { IoIosSend } from "react-icons/io";
 
@@ -68,7 +68,7 @@ const messageBoard = () => {
           <img
             src={SchoolLogo}
             alt="School Logo"
-            className=" h-8 object-cover mr-4"
+            className="h-8 object-cover mr-4"
           />
         </div>
         <div className="flex items-center">
@@ -86,20 +86,14 @@ const messageBoard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex h-screen">
+      <div className="flex flex-col md:flex-row flex-grow">
         {/* Left Navigation Panel */}
-        <div
-
-          className="w-1/6 px-2 py-4 border-r flex flex-col items-left"
-        >
+        <div className="w-full md:w-1/5 px-2 py-4 border-r flex flex-col items-left">
           <NavigationPanel />
         </div>
 
         {/* Chat Snippet */}
-        <div
-
-          className="w-1/6 border-r p-4 overflow-y-scroll"
-        >
+        <div className="sm:w-2/5 md:w-1/4 border-r p-4 overflow-y-scroll">
           <div className="h-10 mb-2">
             <h2 style={{ color: "#3A3285" }} className="text-xl font-bold mb-1">
               Message
@@ -136,17 +130,21 @@ const messageBoard = () => {
         </div>
 
         {/* Chat Panel */}
-        <div className="w-4/6 flex flex-col">
-          <div style={{ backgroundColor: "#204C89" }} className="h-16 flex">
-            <img src={NoProfile} className="w-12 h-12 ml-6 mt-2"></img>
-            <h2 className="text-white ml-4 mt-5">{clickMessage}</h2>
+        <div className="md:w-3/5 sm:w-full md:flex-1 flex flex-col">
+          <div
+            style={{ backgroundColor: "#204C89" }}
+            className="h-16 p-1 flex items-center"
+          >
+            <img src={NoProfile} className="w-12 h-12"></img>
+            <h2 className="text-white ml-4">{clickMessage}</h2>
           </div>
           <div className="p-4 flex-1 overflow-y-scroll">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`mb-4 ${message.sender === "me" ? "text-right" : "text-left"
-                  }`}
+                className={`mb-4 ${
+                  message.sender === "me" ? "text-right" : "text-left"
+                }`}
               >
                 <span
                   style={{ backgroundColor: "rgb(22, 53, 96)" }}
@@ -168,13 +166,12 @@ const messageBoard = () => {
               />
               <button
                 onClick={handleSendMessage}
-                className=" right-0 top-0 bottom-0 bg-blue-500 px-4  text-white focus:outline-none focus:ring focus:border-blue-300"
+                className="bg-blue-500 px-4 py-2 text-white rounded-md focus:outline-none focus:ring focus:border-blue-300"
               >
-                <IoIosSend className="text-white cursor-pointer" />
+                <IoIosSend className="text-white" />
               </button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
