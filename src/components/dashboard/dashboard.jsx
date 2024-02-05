@@ -13,6 +13,10 @@ const Dashboard = () => {
     navigate("/approval");
   }
 
+  function handleAdminDashboardClick() {
+    navigate("/admindashboard");
+  }
+
   function handleMessageClick() {
     navigate("/messages");
     
@@ -91,6 +95,14 @@ const Dashboard = () => {
                   onClick={handleAdminClick}
                 >
                   <div>Admin Login</div> 🧑🏻‍💼
+                </button>
+              </li>
+              <li>
+                <button
+                  className="flex justify-between w-full bg-blue-900 hover:bg-blue-700 text-white px-4 py-2 rounded-xl focus:outline-none"
+                  onClick={handleAdminDashboardClick}
+                >
+                  <div>Admin Dashboard</div> 🧑🏻‍💼
                 </button>
               </li>
             </ul>

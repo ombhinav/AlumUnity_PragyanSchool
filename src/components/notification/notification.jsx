@@ -3,8 +3,7 @@ import { FiBell } from "react-icons/fi"; // Import notification bell icon
 import SchoolLogo from "../../assets/images/message/Linkbkj.png"; // Replace with the path to your school logo
 import ProfilePicture from "../../assets/images/message/profile.png"; // Replace with the path to your profile picture
 import tick from "../../../public/Images/tick-mark.png";
-import cross from "../../../public/Images/remove.png"
-
+import cross from "../../../public/Images/remove.png";
 
 const Notification = () => {
   // Sample data (replace with actual data from your application)
@@ -23,7 +22,7 @@ const Notification = () => {
     {
       id: 6,
       message: "started following you",
-      actionButtons: ["View", "Dismiss"],
+      actionButtons: ["Follow Back", "Dismiss"],
     },
     {
       id: 7,
@@ -39,12 +38,12 @@ const Notification = () => {
     {
       id: 20,
       message: "started following you",
-      actionButtons: ["View", "Dismiss"],
+      actionButtons: ["Follow Back", "Dismiss"],
     },
     {
       id: 11,
       message: "started following you",
-      actionButtons: ["View", "Dismiss"],
+      actionButtons: ["Follow Back", "Dismiss"],
     },
   ];
 
@@ -55,8 +54,6 @@ const Notification = () => {
 
   return (
     <div>
-
-
       <div
         style={{ backgroundColor: "rgb(22, 53, 96)" }}
         className="p-3 flex items-center justify-between"
@@ -82,7 +79,6 @@ const Notification = () => {
         </div>
       </div>
 
-
       <div className=" mx-auto bg-white rounded-md overflow-hidden shadow-md p-6">
         <div className="mt-2">
           <h3 className="text-2xl font-semibold mb-4">Notifications</h3>
@@ -104,36 +100,44 @@ const Notification = () => {
                     <span className="font-bold">{userName}</span>{" "}
                     {notification.message}
                   </p>
-                  <div className="py-1 flex">
-                    <button className="bg-slate-500 w-15 py-0.5">View</button>
-                    <p className="mx-20">(3 mins)</p>
-                  </div>
                 </div>
               </div>
 
-
-
-
-              <div className="flex space-x-2">
-                <div className="flex mr-12 w-24 py-2">
+              <div className="flex space-x-2 items-center">
+                {/* <div className="flex mr-8 w-24 py-2">
                   <img className="px-5" src={tick} alt="" />
                   <img src={cross} alt="" />
-                </div>
+                </div> */}
 
-
-
-
-
-
-                {notification.actionButtons.map((actionButton, index) => (
+                {/* Conditionally render Follow Back or View button */}
+                {notification.message === "started following you" ? (
                   <button
-                    key={index}
-                    onClick={() => handleAction(notification.id, actionButton)}
-                    className="text-gray-200 hover:underline focus:outline-none"
+                    onClick={() => handleAction(notification.id, "Follow Back")}
+                    className="text-xs text-gray-200 focus:outline-none "
+                    style={{ margin: "0 5px" }} // Adjust margin for alignment
                   >
-                    {actionButton}
+                    Follow Back
                   </button>
-                ))}
+                ) : (
+                  
+                    <button
+                    onClick={() => handleAction(notification.id, "View")}
+                    className="text-xs  px-8 text-gray-200 focus:outline-none"
+                    style={{ margin: "0 5px" }} // Adjust margin for alignment
+                  >
+                    View
+                  </button>
+                  
+                  
+                )}
+
+                <button
+                  onClick={() => handleAction(notification.id, "Dismiss")}
+                  className="text-xs text-gray-200 focus:outline-none"
+                  style={{ margin: "0 5px" }} // Adjust margin for alignment
+                >
+                  Dismiss
+                </button>
               </div>
             </div>
           ))}
